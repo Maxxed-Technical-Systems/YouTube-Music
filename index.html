@@ -360,15 +360,14 @@
         }
     </script>
 
-    <!-- Live Visitor Counter -->
+    <!-- Live Visitor Counter using CountAPI v2 -->
     <script>
-        const pageKey = 'coffeehouse-radio';
-        const namespace = 'my-radio-site';
         const visitorSpan = document.getElementById('visitor-count');
+        const counterUrl = 'https://api.countapi.xyz/v2/workspaces/coffeehouse/coffeehouse/hit';
 
         async function updateVisitorCount() {
             try {
-                const res = await fetch(`https://api.countapi.xyz/hit/${namespace}/${pageKey}`);
+                const res = await fetch(counterUrl);
                 const data = await res.json();
                 visitorSpan.textContent = data.value;
             } catch (err) {
@@ -379,7 +378,7 @@
         // Initial load
         updateVisitorCount();
 
-        // Update every 10 seconds
+        // Refresh counter every 10 seconds
         setInterval(updateVisitorCount, 10000);
     </script>
 </body>
