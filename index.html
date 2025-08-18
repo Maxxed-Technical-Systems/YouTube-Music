@@ -277,6 +277,9 @@
                 </div>
                 <p class="tiny" style="margin-top:10px">Embedded live stream helps visitors enjoy continuous coffeehouse
                     music and convert into subscribers. Hit the ❤️ button to like!</p>
+
+                <!-- Visitor Counter -->
+                <p class="tiny" style="margin-top:10px">Visitors: <span id="visitor-count">0</span></p>
             </div>
         </section>
 
@@ -312,21 +315,6 @@
             </div>
         </section>
 
-        <p class="tiny">Visitors: <span id="visitor-count">0</span></p>
-        <script>
-            // Using CountAPI to track visits
-            const pageKey = 'coffeehouse-radio'; // unique key for this page
-            const namespace = 'my-radio-site';
-
-            // Increment the counter and get the new value
-            fetch(`https://api.countapi.xyz/hit/${namespace}/${pageKey}`)
-                .then(res => res.json())
-                .then(data => {
-                    document.getElementById('visitor-count').textContent = data.value;
-                })
-                .catch(err => console.error('Counter error:', err));
-        </script>
-
         <footer>
             <p>Thanks for tuning into <strong>CoffeeHouse Radio</strong> 🙌 • <a href="[SOCIAL_LINK]"
                     style="color:var(--primary);text-decoration:none" target="_blank" rel="noopener">Follow our
@@ -335,6 +323,7 @@
         </footer>
     </div>
 
+    <!-- YouTube player -->
     <script src="https://www.youtube.com/iframe_api"></script>
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
@@ -371,7 +360,28 @@
         }
     </script>
 
+    <!-- Live Visitor Counter -->
+    <script>
+        const pageKey = 'coffeehouse-radio';
+        const namespace = 'my-radio-site';
+        const visitorSpan = document.getElementById('visitor-count');
 
+        async function updateVisitorCount() {
+            try {
+                const res = await fetch(`https://api.countapi.xyz/hit/${namespace}/${pageKey}`);
+                const data = await res.json();
+                visitorSpan.textContent = data.value;
+            } catch (err) {
+                console.error('Counter error:', err);
+            }
+        }
+
+        // Initial load
+        updateVisitorCount();
+
+        // Update every 10 seconds
+        setInterval(updateVisitorCount, 10000);
+    </script>
 </body>
 
 </html>
