@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CoffeeHouse Radio • Listen Live 24/7</title>
+    <meta name="description"
+        content="Stream CoffeeHouse Radio 24/7 for relaxing Americana music. Subscribe for continuous live acoustic coffeehouse vibes!" />
+    <meta property="og:title" content="CoffeeHouse Radio • Listen Live 24/7" />
+    <meta property="og:description" content="Relaxing acoustic and Americana coffeehouse music streaming 24/7." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://your-domain.com" />
+    <meta property="og:image" content="https://img.youtube.com/vi/-kesek7Co_o/maxresdefault.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <script src="https://apis.google.com/js/platform.js"></script>
+
+    <style>
+        :root {
+            --bg: #0f0f11;
+            --panel: #15161a;
+            --primary: #eab308;
+            --text: #ffffff;
+            --muted: #b8b9c0;
+            --accent: #22c55e;
+            --shadow: 0 10px 30px rgba(0, 0, 0, .45);
+            --radius: 16px;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html,
+        body {
+            height: 100%
+        }
+
+        body {
+            margin: 0;
+            font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+            background: radial-gradient(1200px 800px at 80% -10%, #1d1f25 0%, var(--bg) 60%);
+            color: var(--text);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 28px
+        }
+
+        .hero {
+            display: grid;
+            gap: 22px;
+            align-items: center;
+            grid-template-columns: 1.2fr 1fr;
+        }
+
+        @media(max-width:980px) {
+            .hero {
+                grid-template-columns: 1fr
+            }
+        }
+
+        .card {
+            background: var(--panel);
+            border: 1px solid #25262b;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow)
+        }
+
+        .pad {
+            padding: 22px
+        }
+
+        h1 {
+            font-size: clamp(28px, 5vw, 44px);
+            line-height: 1.05;
+            margin: 0 0 8px
+        }
+
+        p.lead {
+            color: var(--muted);
+            margin: 0 0 18px;
+            font-size: clamp(15px, 2.3vw, 18px)
+        }
+
+        .btns {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap
+        }
+
+        .btn {
+            appearance: none;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: .2px;
+            padding: 14px 18px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform .08s ease, filter .2s ease;
+        }
+
+        .btn:active {
+            transform: translateY(1px)
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: #111
+        }
+
+        .btn-secondary {
+            background: #2a2b31;
+            color: #fff;
+            border: 1px solid #35363c
+        }
+
+        .btn-accent {
+            background: var(--accent);
+            color: #08120b
+        }
+
+        .video-wrap {
+            position: relative;
+            aspect-ratio: 16/9;
+            border-radius: 14px;
+            overflow: hidden;
+            background: #0b0c0e;
+            border: 1px solid #232429
+        }
+
+        .video-wrap iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: 0
+        }
+
+        .section {
+            margin-top: 28px
+        }
+
+        .grid {
+            display: grid;
+            gap: 18px;
+            grid-template-columns: repeat(3, 1fr)
+        }
+
+        @media(max-width:900px) {
+            .grid {
+                grid-template-columns: 1fr
+            }
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: #1e2026;
+            color: #dcdde2;
+            border: 1px solid #2b2c33;
+            font-size: 14px
+        }
+
+        .tiny {
+            font-size: 12px;
+            color: #8d8f97
+        }
+
+        footer {
+            margin: 36px 0 10px;
+            text-align: center;
+            color: #8f9097
+        }
+
+        input,
+        button {
+            font: inherit
+        }
+
+        form.news {
+            display: grid;
+            gap: 10px;
+            grid-template-columns: 1fr auto
+        }
+
+        @media(max-width:560px) {
+            form.news {
+                grid-template-columns: 1fr
+            }
+        }
+
+        .input {
+            background: #0f1014;
+            border: 1px solid #2b2c33;
+            color: #fff;
+            padding: 14px 12px;
+            border-radius: 12px;
+            outline: none
+        }
+
+        .input:focus {
+            border-color: #3f414a
+        }
+
+        .glow {
+            position: relative
+        }
+
+        .glow::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -14px;
+            height: 28px;
+            filter: blur(22px);
+            background: linear-gradient(90deg, transparent, rgba(234, 179, 8, .35), transparent);
+            pointer-events: none
+        }
+
+        .now-playing {
+            font-weight: 700;
+            font-size: 16px;
+            margin-bottom: 8px;
+            color: var(--primary);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- Hero -->
+        <section class="hero">
+            <div class="card pad">
+                <span class="badge">🎵 Live 24/7 • Americana Coffeehouse</span>
+                <h1>Welcome to <span style="color:var(--primary)">CoffeeHouse Radio</span></h1>
+                <p class="lead">Relaxing acoustic and Americana coffeehouse music streaming around the clock. Subscribe
+                    to never miss a beat and join our cozy listener community!</p>
+
+                <div class="btns">
+                    <a id="watchBtn" class="btn btn-primary glow" href="https://www.youtube.com/@CoffeeHouseRadio"
+                        target="_blank" rel="noopener">▶ Listen Live</a>
+                    <a id="subBtn" class="btn btn-secondary"
+                        href="https://www.youtube.com/@CoffeeHouseRadio?sub_confirmation=1" target="_blank"
+                        rel="noopener">📌 Subscribe on YouTube</a>
+                    <a id="shortsBtn" class="btn btn-accent" href="#" target="_blank" rel="noopener"
+                        style="display:none">🎞️ Quick Sample Short</a>
+                </div>
+                <p class="tiny">Tip: open in a new tab so you can keep browsing here.</p>
+
+                <div style="margin-top:14px">
+                    <div class="g-ytsubscribe" data-channelid="ANyPxKpN6CfjDbiDbvXOCBCZG7PN2VkhDOire5RBy2wk"
+                        data-layout="default" data-count="default"></div>
+                </div>
+            </div>
+
+            <div class="card pad">
+                <div class="now-playing">Now Playing</div>
+                <p class="tiny" style="margin-top:10px">Please unmute to enjoy the relaxing music 🎵</p>
+                <div class="video-wrap">
+                    <div id="player"></div>
+                </div>
+                <p class="tiny" style="margin-top:10px">Embedded live stream helps convert real visitors into
+                    subscribers. Hit the ❤️ button to like!</p>
+            </div>
+        </section>
+
+        <!-- Value / Lead Magnet / Social Proof -->
+        <section class="section grid">
+            <div class="card pad">
+                <h3 style="margin:0 0 6px">🎁 Free Playlist</h3>
+                <p class="lead" style="margin:0 0 12px">Sign up to receive our exclusive CoffeeHouse playlist PDF.</p>
+                <form class="news" action="[LEAD_FORM_ACTION]" method="post">
+                    <input class="input" type="email" name="email" placeholder="Enter your email" required />
+                    <button class="btn btn-accent" type="submit">Get the Playlist</button>
+                </form>
+                <p class="tiny">No spam. Unsubscribe anytime.</p>
+            </div>
+
+            <div class="card pad">
+                <h3 style="margin:0 0 6px">💬 Why Subscribe?</h3>
+                <ul style="margin:0;padding-left:18px;color:var(--muted)">
+                    <li>Listen 24/7 to relaxing Americana coffeehouse music</li>
+                    <li>Exclusive playlists and live streams for subscribers</li>
+                    <li>Join a cozy, music-loving community</li>
+                </ul>
+            </div>
+
+            <div class="card pad">
+                <h3 style="margin:0 0 6px">✅ Quick Wins</h3>
+                <ul style="margin:0;padding-left:18px;color:var(--muted)">
+                    <li>Hit "Listen Live" for uninterrupted music</li>
+                    <li>Subscribe so you never miss a stream</li>
+                    <li>Grab the free playlist to enjoy offline</li>
+                </ul>
+            </div>
+        </section>
+
+        <footer>
+            <p>Thanks for tuning into <strong>CoffeeHouse Radio</strong> 🙌 • <a href="[SOCIAL_LINK]"
+                    style="color:var(--primary);text-decoration:none" target="_blank" rel="noopener">Follow us</a></p>
+            <p class="tiny">© <span id="year"></span> CoffeeHouse Radio. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        function initPlayer() {
+            new YT.Player('player', {
+                height: '100%',
+                width: '100%',
+                videoId: '-kesek7Co_o',
+                playerVars: { autoplay: 1, controls: 1, modestbranding: 1, mute: 1 },
+                events: {
+                    'onReady': function (event) {
+                        event.target.playVideo(); // Start playback muted
+                        // Gradually increase volume to avoid pause issues
+                        setTimeout(() => {
+                            event.target.setVolume(5); // Start very low
+                            event.target.unMute();
+                            let vol = 5;
+                            const interval = setInterval(() => {
+                                vol += 5;
+                                if (vol > 10) {
+                                    vol = 10;
+                                    clearInterval(interval);
+                                }
+                                event.target.setVolume(vol);
+                            }, 200); // Increase volume every 200ms until 20%
+                        }, 2000);
+                    }
+                }
+            });
+        }
+
+        function onYouTubeIframeAPIReady() {
+            initPlayer();
+        }
+    </script>
+</body>
+
+</html>
